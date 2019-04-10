@@ -1,6 +1,6 @@
 #!/usr/bin/gnuplot
 reset
-datafile = "dat.txt"
+datafile = "static.dat"
 set title "STREAM benchmark for the copy kernel"
 set xlabel "Number of Threads"
 set ylabel "Bandwidth (MB/s)"
