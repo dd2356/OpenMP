@@ -66,10 +66,28 @@ void omp_padded_sum(double *sum_ret)
 
 void omp_private_sum(double *sum_ret)
 {
+    int threads = omp_get_max_threads(); 
+    double thread_sum;
+    *sum_ret = 0; 
 
+    #pragma omp parallel private(thread_sum)
+    {
+        int tid = omp_get_thread_num();
+        for (int i = tid; i < size; i += threads){
+            thread_sum += x[i];
+        }
+        #pragma omp critical
+        *sum_ret += thread_sum;
+    }
 }
 
 void omp_reduction_sum(double *sum_ret)
 {
-
+    *sum_ret = 0;
+    double sum = 0;
+    #pragma omp parallel for reduction(+ : sum)
+    for (int i = 0; i < size; i++) {
+        sum += x[i];
+    }
+    *sum_ret = sum;
 }
