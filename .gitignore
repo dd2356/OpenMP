@@ -41,6 +41,7 @@ Thumbs.db
 *.out
 *.bin
 *.txt
+*.dat
 npbparams.h
 setparams
 vgcore.*
