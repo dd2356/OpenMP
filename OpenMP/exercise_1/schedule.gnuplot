@@ -1,8 +1,9 @@
 #!/usr/bin/gnuplot
 reset
-datafile = "schedule.dat"
+datafile = "schedules.dat"
 set title "STREAM benchmark for different scheduling policies"
 set xlabel "Scheduling policy"
+set xtics rotate 
 set ylabel "Bandwidth (MB/s)"
 set offsets 1, 1, 0, 0
 set terminal png
