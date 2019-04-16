@@ -14,5 +14,6 @@ struct Body {
 };
 
 void nbody(struct Body*, int, int, int, double, double, double);
+void move_body(struct Body *bodies, int N, double G, double DT, double EPS, int j);
 
 #endif

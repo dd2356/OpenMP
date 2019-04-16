@@ -4,6 +4,8 @@
 // idft: 1 direct DFT, -1 inverse IDFT (Inverse DFT)
 int DFT(int idft, double* xr, double* xi, double* Xr_o, double* Xi_o, int N)
 {
+	// #pragma omp parallel for
+	#pragma omp parallel for schedule(static)
 	for (int k = 0 ; k < N; k++) {
 		for (int n = 0; n < N; n++) {
 			// Real part of X[k]
@@ -15,6 +17,8 @@ int DFT(int idft, double* xr, double* xi, double* Xr_o, double* Xi_o, int N)
 		
 	// normalize if you are doing IDFT
 	if (idft == -1){
+		// #pragma omp parallel for
+		#pragma omp parallel for schedule(static)
 		for (int n = 0; n < N; n++) {
 			Xr_o[n] /= N;
 			Xi_o[n] /= N;
